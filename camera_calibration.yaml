@@ -1,0 +1,26 @@
+image_width: 640
+image_height: 480
+camera_name: arduino_1080p
+camera_matrix:
+  rows: 3
+  cols: 3
+  data: [1064.31468,    0.     ,  308.1238 ,
+            0.     , 1068.32207,  253.60508,
+            0.     ,    0.     ,    1.     ]
+distortion_model: plumb_bob
+distortion_coefficients:
+  rows: 1
+  cols: 5
+  data: [0.274575, -0.461207, 0.011248, -0.001232, 0.000000]
+rectification_matrix:
+  rows: 3
+  cols: 3
+  data: [1., 0., 0.,
+         0., 1., 0.,
+         0., 0., 1.]
+projection_matrix:
+  rows: 3
+  cols: 4
+  data: [1096.55005,    0.     ,  307.56098,    0.     ,
+            0.     , 1095.7168 ,  255.62786,    0.     ,
+            0.     ,    0.     ,    1.     ,    0.     ]

@@ -1,0 +1,5 @@
+=== Summary Metrics (lower is better) ===
+Yaw RMSE (rad):   baseline=0.0125, proposed=0.0182
+Yaw jitter (rad/frame): baseline=0.01767, proposed=0.00162
+Pitch RMSE (rad): baseline=0.0127, proposed=0.0067
+Pitch jitter (rad/frame): baseline=0.01765, proposed=0.00068
