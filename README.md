@@ -39,47 +39,42 @@ By validating this approach in a high-fidelity simulation, we demonstrate that w
 
 ### How α–β relates to the Kalman filter (key insight)
 
-### Relation to the Kalman Filter
+### Connection to the Kalman Filter
 
 The standard Kalman filter state update is given by:
 
-\[
-\mathbf{x}_k = \mathbf{x}_k^- + \mathbf{K}_k \left( z_k - \mathbf{H}\mathbf{x}_k^- \right)
-\]
+$$
+\mathbf{x}_k = \mathbf{x}_k^- + \mathbf{K}_k ( z_k - \mathbf{H}\mathbf{x}_k^- )
+$$
 
-where \(\mathbf{K}_k\) is the Kalman gain.
+where $\mathbf{K}_k$ is the Kalman gain.
 
-For a position-only measurement with
+For a position-only measurement with:
 
-\[
-\mathbf{H} = \begin{bmatrix} 1 & 0 \end{bmatrix},
-\]
+$$
+\mathbf{H} = \begin{bmatrix} 1 & 0 \end{bmatrix}
+$$
 
 the innovation reduces to:
 
-\[
-z_k - \mathbf{H}\mathbf{x}_k^- = z_k - p_k^- = r_k.
-\]
+$$
+z_k - \mathbf{H}\mathbf{x}_k^- = z_k - p_k^- = r_k
+$$
 
-If the Kalman gain is chosen as a fixed vector
+If the Kalman gain is chosen as a fixed vector:
 
-\[
-\mathbf{K}_k =
-\begin{bmatrix}
-\alpha \\
-\beta / \Delta t
-\end{bmatrix},
-\]
+$$
+\mathbf{K}_k = \begin{bmatrix} \alpha \\ \beta / \Delta t \end{bmatrix}
+$$
 
-then the Kalman update becomes exactly the classical \(\alpha\)–\(\beta\) filter:
+then the Kalman update becomes exactly the classical $\alpha-\beta$ filter:
 
-\[
+$$
 \begin{aligned}
-p_k &= p_k^- + \alpha r_k, \\
-v_k &= v_k^- + (\beta / \Delta t)\, r_k.
+p_k &= p_k^- + \alpha r_k \\
+v_k &= v_k^- + (\beta / \Delta t) r_k
 \end{aligned}
-\]
-
+$$
 
 **So α–β is a Kalman filter with fixed gain** (instead of computing (K_k) from covariances each step). That’s why it is lightweight, deterministic, and great for embedded head control.
  
