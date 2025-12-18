@@ -5,7 +5,7 @@
 # Introduction
 
 ## Motivation: The Uncanny Valley of Robot Motion
-Socially interactive robots, such as the "Cara" teddy bear platform being developed in parallel to this work, require more than just intelligent speech; they require non-verbal behavior that feels organic and safe. A critical component of this is **head gaze tracking**—the ability to look at a user's face smoothly.
+Socially interactive robots, such as the "Cara" teddy bear platform being developed in parallel to this work, require more than just intelligent speech; they require non-verbal behavior that feels organic and safe. A critical component of this is **head gaze tracking** : the ability to look at a user's face smoothly.
 
 However, raw perception data from webcams is inherently noisy. Face detectors suffer from pixel quantization error, Gaussian noise, and occasional "flicker" (outliers) where the bounding box jumps briefly to the background. If these raw signals are fed directly into a servo controller, the result is "jitter"—rapid, small-amplitude vibrations. On a physical robot, jitter is disastrous: it creates audible motor whine, accelerates mechanical wear, and makes the robot appear frantic or "glitchy," breaking the illusion of life.
 
