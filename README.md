@@ -1,7 +1,6 @@
 
 # Vision-Based Head Controller (Hardware-Free Demo)
-
-**EECS 465: Introduction to Robotics Algorithms – Final Project**
+ 
 ***
 # Introduction
 
