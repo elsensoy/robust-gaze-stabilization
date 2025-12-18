@@ -22,12 +22,7 @@ This project implements a **Model-Based Perception-Control Pipeline** designed s
 
 By validating this approach in a high-fidelity simulation, we demonstrate that we can achieve the "best of both worlds": the responsiveness of a predictive filter with the mechanical smoothness of a damped system. This forms the algorithmic foundation for the physical robot's future head-tracking subsystem.
 
-***
-
-### How this connects everything
-* **It keeps the "Teddy Bear" context:** You mention it as the broader motivation, which makes the project feel significant and personal.
-* **It justifies the Simulation:** You frame the simulation as "validating the approach," which is standard engineering practice.
-* **It hits the Class Themes:** You explicitly mention Kalman filtering principles, PID limitations, and model-based design, which professors love to see.
+**
 
 ### How α–β relates to the Kalman filter (key insight)
 
