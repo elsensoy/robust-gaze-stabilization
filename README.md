@@ -429,18 +429,44 @@ The results highlight a fundamental trade-off in control theory: latency vs. smo
 
 #### 3. Robustness to Outliers
 As shown in Figure 3 (Outliers & Gating), the system demonstrated robust rejection of spurious detections. At t=9s and t=12s, the synthetic detector injected large outliers (simulating background false positives). The baseline controller snapped instantly to these errors, causing a "glitch" motion. The proposed α−β filter, utilizing the innovation clamp (gating), ignored these spikes, maintaining a smooth velocity estimate.
-### 4. Hardware Integration & Validation (optional)
-As detailed above, a simulation-based evaluation was chosen to ensure deterministic, repeatable comparisons across control strategies, which is difficult to guarantee in a live vision-and-hardware loop.
 
-Following the simulation, the control logic was ported to the "Cara" robot's ROS 2 stack running on an NVIDIA Jetson Orin.
+### 🎥  Hardware Validation (Jetson Orin)
 
-    #### Setup:
-     We utilized the existing manual_control.py script from the robot's repository, modifying it to pass joystick/vision inputs through our Python GHFilter class before publishing to the servo controller.
+To validate the algorithm on physical hardware, we include a specialized script `run_jetson_experiment.py`. This script drives the pan/tilt servos to trace a wide **Figure-8 (Lissajous)** pattern, allowing for a side-by-side comparison of motion quality.
 
-    Visual Observation:
+### Comparison Modes
 
-        **Baseline:** When raw values were passed, the servos exhibited "chatter" (audible humming) and the head tracked micro-movements of the operator's hand or face detection noise.
+The script replicates the exact noise/outlier conditions from the simulation but pipes the output to the PCA9685 servo driver:
 
-        **Proposed:** With the filter enabled, the head movement became fluid. The "robot servo sound" was virtually eliminated because the acceleration profiles were smoothed by the Dynamical System.
+1. **Mode 1: Baseline (Direct Mapping)**
+* **Behavior:** The servos attempt to track every noisy pixel and outlier.
+* **Result:** Audible motor chatter, high vibration, and "glitchy" jumps when outliers occur.
 
-    ** Conclusion:** The hardware test confirmed that the jitter reduction observed in simulation translates directly to improved mechanical longevity and a more life-like user interaction.
+
+2. **Mode 2: Proposed (Smooth Figure-8)**
+* **Behavior:** The \alpha-\beta filter rejects outliers while the DS controller smooths the trajectory.
+* **Result:** Silent, fluid motion tracing a perfect "8" shape, completely ignoring sensor glitches.
+
+### How to Run
+
+On your Jetson (or device with Adafruit PCA9685/Motor HAT):
+
+```bash
+sudo python3 run_jetson_experiment.py
+
+```
+
+*Follow the on-screen prompt to select Mode 1 or Mode 2.*
+
+### Output: Trajectory Plot
+
+At the end of the run, the script saves `servo_trajectory.png`. This visualizes the physical path taken by the camera:
+
+#### example plot:
+
+![Image of Vision Transformer architecture diagram](outputs-jetson/servo_trajectory_comparison.png "Servo Trajectory: Baseline & α–β Filter ")
+
+* **Baseline:** Shows a "fuzzy," jagged path due to jitter.
+* **Proposed:** Shows a clean, continuous Figure-8 loop.
+
+*(Note: Requires `adafruit-circuitpython-pca9685` and `adafruit-circuitpython-motor` libraries)*
