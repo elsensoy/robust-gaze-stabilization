@@ -2,13 +2,6 @@
 # Vision-Based Head Controller (Hardware-Free Demo)
 
 **EECS 465: Introduction to Robotics Algorithms – Final Project**
-
-This is excellent. Your initial proposal and the final implementation align almost perfectly. You have successfully built exactly what you promised: a **lightweight, predictive, model-based controller** that favors stability over raw speed.
-
-The only slight deviation is that the final submission is a **Python simulation (`demo.py`)** rather than a live ROS 2 node on hardware. This is actually a *strength* for an algorithms class report because it isolates the logic from hardware bugs and allows for rigorous, repeatable quantitative testing (which is hard to do with a live webcam and a moving servo).
-
-Here is the **Introduction** section for your report. It bridges your original proposal's vision ("Cara," the teddy bear) with the specific algorithmic work you did for this class.
-
 ***
 # Introduction
 
